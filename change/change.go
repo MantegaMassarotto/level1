@@ -9,12 +9,12 @@ func GiveChange(paymentValue float32, billValue float32) ([]float32, error) {
 		return nil, errors.New("The payment amount is insufficient")
 	}
 
-	changeMoneyBills := []float32{}
+	change := []float32{}
 
 	changeAmount := paymentValue - billValue
 
 	if changeAmount == 0 {
-		return changeMoneyBills, nil
+		return change, nil
 	}
 
 	changeRest := changeAmount
@@ -26,12 +26,12 @@ func GiveChange(paymentValue float32, billValue float32) ([]float32, error) {
 			moneyBillQtd := int(changeRest / moneyBill)
 			if moneyBillQtd >= 1 {
 				for y := 0; y < moneyBillQtd; y++ {
-					changeMoneyBills = append(changeMoneyBills, moneyBill)
+					change = append(change, moneyBill)
 					changeRest = changeRest - moneyBill
 				}
 			}
 		}
 	}
 
-	return changeMoneyBills, nil
+	return change, nil
 }
