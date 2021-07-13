@@ -9,6 +9,7 @@ type Product struct {
 
 type Inventory struct {
 	Products map[int]Product
+	counter  int
 }
 
 func AddProduct(inventory Inventory, product Product) (Inventory, error) {
@@ -17,5 +18,6 @@ func AddProduct(inventory Inventory, product Product) (Inventory, error) {
 		return inventory, errors.New("Product already exits in inventory")
 	}
 	inventory.Products[product.Id] = product
+	inventory.counter++
 	return inventory, nil
 }
