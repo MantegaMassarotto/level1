@@ -2,14 +2,14 @@ package change
 
 import "errors"
 
-var availableMoneyBills = []float32{200, 100, 50, 20, 10, 5, 2, 1, 0.50, 0.25, 0.10, 0.05, 0.01}
+var availableMoneyBills = []float64{200, 100, 50, 20, 10, 5, 2, 1, 0.50, 0.25, 0.10, 0.05, 0.01}
 
-func GiveChange(paymentValue float32, billValue float32) ([]float32, error) {
+func GiveChange(paymentValue float64, billValue float64) ([]float64, error) {
 	if paymentValue < billValue {
 		return nil, errors.New("The payment amount is insufficient")
 	}
 
-	change := []float32{}
+	change := []float64{}
 
 	changeAmount := paymentValue - billValue
 
